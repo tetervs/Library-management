@@ -1,0 +1,72 @@
+books=[]
+
+def add():
+    title = input("Enter book's name: ")
+    author = input("Enter author's name: ")
+    ID = int(input("Enter id number: "))
+
+    book = {'title': title, 'author': author, 'ID': ID}
+    books.append(book)
+
+    print("Book's details added successfully")
+
+def display():
+    print("\nBooks in the library:")
+    for book in books:
+        print("Title -", book['title'], "\nAuthor -", book['author'], "\nBook ID -", book['ID'])
+
+def issue():
+    issue_book = input("Enter book's title that you want to issue: ")
+    for book in books:
+        if issue_book == book['title']:
+            print("Book issued")
+            books.remove(book)
+            break
+    else:
+        print("Book not found or already issued")
+
+def search():
+    search_id = int(input("Enter book id to be searched for: "))
+    for book in books:
+        if search_id == book['ID']:
+            print("Book found")
+            break
+    else:
+        print("Book not found")
+
+def return_book():
+    return_title = input("Enter book that's being returned: ")
+    return_author = input("Enter author's name of the book being returned: ")
+    return_id = int(input("Enter book id of the book being returned: "))
+
+    returned_book = {'title': return_title, 'author': return_author, 'ID': return_id}
+    books.append(returned_book)
+
+    print("Book returned successfully")
+
+while True:
+    print("\nLibrary Management System:")
+    print("[1] Add Book\n[2] Display Books\n[3] Issue a book\n[4] Search for book\n[5] Return book\n[6] Exit")
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        add()
+
+    elif choice == '2':
+        display()
+
+    elif choice == '3':
+        issue()
+
+    elif choice == '4':
+        search()
+
+    elif choice == '5':
+        return_book()
+
+    elif choice == '6':
+        print("Exiting the Library Management System.")
+        break
+
+    else:
+        print("Invalid choice. Please enter a number between 1 and 6.")
